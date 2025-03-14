@@ -31,6 +31,9 @@ Route::middleware('auth:sanctum')->delete('/Itinéraires/{id}', [ItineraireContr
 Route::get('/Itinéraires/search/{title}', [ItineraireController::class, 'search']);
 Route::middleware('auth:sanctum')->get('/logout', [AuthController::class, 'logout']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::middleware('auth:sanctum')->post('/Itinéraires/{id}/add-to-list', [ItineraireController::class, 'addToListToVisit']);
+Route::middleware('auth:sanctum')->post('/Itinéraires/{id}/remove-from-list', [ItineraireController::class, 'removeFromListToVisit']);
+
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

@@ -107,4 +107,17 @@ class ItineraireController extends Controller
 
         return response()->json($itineraire, 200);
     }
+
+    public function addToListToVisit($id)
+    {
+        $itineraire = Itineraire::findOrFail($id);
+
+        // Add the itinerary to the authenticated user's list to visit
+        auth()->user()->itineraireToVisit()->attach($itineraire);
+
+        return response()->json([
+            'message' => 'Itineraire added to your list to visit.',
+            'itineraire' => $itineraire
+        ], 200);
+    }
 }

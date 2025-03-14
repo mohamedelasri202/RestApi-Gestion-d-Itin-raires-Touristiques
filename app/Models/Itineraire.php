@@ -21,4 +21,9 @@ class Itineraire extends Model
     {
         return $this->hasMany(Destination::class);
     }
+
+    public function usersToVisit()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
